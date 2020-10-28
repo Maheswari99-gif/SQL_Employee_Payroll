@@ -20,3 +20,7 @@ INSERT INTO  employee_payroll (name,salary,start) VALUES
 ('Ambani',250000.00,'2017-09-02');
 #UC4
 select * from employee_payroll;
+#UC5
+select salary from employee_payroll where name='Bill';
+select * from employee_payroll
+where start BETWEEN CAST('2017-1-1' AS DATE) AND DATE(NOW());
