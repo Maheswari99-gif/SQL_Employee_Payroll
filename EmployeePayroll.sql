@@ -24,3 +24,8 @@ select * from employee_payroll;
 select salary from employee_payroll where name='Bill';
 select * from employee_payroll
 where start BETWEEN CAST('2017-1-1' AS DATE) AND DATE(NOW());
+#UC6
+ALTER TABLE employee_payroll ADD gender CHAR(1) AFTER name;
+update employee_payroll set gender='F' where name='Mark';
+update employee_payroll set gender='M' where name='Bill';
+update employee_payroll set gender='M' where name='Ambani';
