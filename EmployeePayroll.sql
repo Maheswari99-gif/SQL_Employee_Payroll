@@ -29,3 +29,11 @@ ALTER TABLE employee_payroll ADD gender CHAR(1) AFTER name;
 update employee_payroll set gender='F' where name='Mark';
 update employee_payroll set gender='M' where name='Bill';
 update employee_payroll set gender='M' where name='Ambani';
+#UC7
+select AVG(salary) from employee_payroll where gender='M' group by gender;
+select SUM(salary) from employee_payroll where gender='M' group by gender;
+select MIN(salary) from employee_payroll where gender='M' group by gender;
+select MAX(salary) from employee_payroll where gender='M' group by gender;
+select COUNT(salary) from employee_payroll where gender='M' group by gender;
+
+
