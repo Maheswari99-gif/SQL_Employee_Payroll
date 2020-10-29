@@ -35,5 +35,10 @@ select SUM(salary) from employee_payroll where gender='M' group by gender;
 select MIN(salary) from employee_payroll where gender='M' group by gender;
 select MAX(salary) from employee_payroll where gender='M' group by gender;
 select COUNT(salary) from employee_payroll where gender='M' group by gender;
+#UC8
+ALTER TABLE employee_payroll ADD phone_number VARCHAR(250) AFTER name;
+ALTER TABLE employee_payroll ADD address VARCHAR(250) AFTER phone_number;
+ALTER TABLE employee_payroll ADD department VARCHAR(150) NOT NULL AFTER address;
+ALTER TABLE employee_payroll ALTER address SET DEFAULT 'TBD';
 
 
