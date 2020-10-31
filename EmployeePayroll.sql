@@ -52,6 +52,46 @@ INSERT INTO employee_payroll
 (name, department, gender, basic_pay, deductions, taxable_pay, tax, net_pay, start) VALUES
 ('Mark', 'Marketing', 'F', 3000000.00, 1000000.00, 2000000.00, 500000.00, 1500000.00, '2019-10-05');
 SELECT * FROM employee_payroll WHERE name = 'Mark';
+#UC11                                                            
+create table company (
+    comp_id int unsigned not null primary key,
+    comp_name varchar(50) not null
+);
+
+create table employee (
+    emp_id int unsigned not null primary key,
+    name varchar(50) not null,
+    comp_id int unsigned,
+    phn_no varchar(50) not null,
+    address varchar(250) not null,
+    gender char(1),
+    start_date date not null,
+    foreign key (comp_id) references company (comp_id)
+);
+
+create table department (
+    dept_id int  not  null primary key,
+    dept_name varchar(50) not null
+);
+
+create table payroll (
+    emp_id int unsigned not null,
+    basic_pay double not null,
+    deductions double not null,
+    taxable_pay double not null,
+    income_tax double not null,
+    net_pay double not null,
+    foreign key (emp_id) references employee (emp_id)
+);
+
+create table employee_department (
+    emp_id int unsigned not null,
+    dept_id int not null,
+    foreign key (emp_id) references employee (emp_id),
+    foreign key (dept_id) references department (dept_id)
+);
+
+
 
 
 
