@@ -90,6 +90,50 @@ create table employee_department (
     foreign key (emp_id) references employee (emp_id),
     foreign key (dept_id) references department (dept_id)
 );
+INSERT INTO payroll(emp_id,basic_pay,deductions,taxable_pay,income_tax,net_pay) VALUES
+('E1',10000,5000,15000,2000,16000),
+('E2',20000,4000,20000,4000,26000),
+('E3',30000,3000,30000,3000,37000);
+SELECT * FROM payroll;
+
+INSERT INTO employee (emp_id,name,comp_id,phn_no,address,gender,start_date) VALUES
+('E1','Bill','C1','12345678','AP','M','2010-06-22'),
+('E2','Mark','C2','245132613','AP','M','2016-10-15'),
+('E3','Terisa','C3','34567832','AP','F','2018-01-11');
+SELECT * FROM employee;
+
+INSERT INTO department(dept_id,dept_name) VALUES
+('D1', 'training'),
+('D2', 'sales'),
+('D3', 'marketing');
+SELECT * FROM department;
+INSERT INTO employee_department(emp_id,dept_id) VALUES
+('E1','D1'),
+('E2','D3'),
+('E3','D2');
+SELECT * FROM employee_department;
+SELECT gender,SUM(net_pay),AVG(net_pay),MIN(net_pay),MAX(net_pay) 
+FROM employee JOIN payroll 
+ON employee.emp_id = payroll.emp_id
+GROUP BY gender ; 
+select gender,COUNT(*) from employee_details group by gender;
+#UC12
+SELECT * FROM payroll;
+SELECT * FROM employee;
+SELECT * FROM department;
+SELECT * FROM employee_department;
+
+SELECT name,basic_pay,deductions,taxable_pay,income_tax,net_pay 
+FROM employee JOIN payroll 
+ON employee.emp_id = payroll.emp_id
+HAVING name = 'Bill';              
+
+SELECT start_date,name,basic_pay,deductions,taxable_pay,income_tax,net_pay 
+FROM employee JOIN payroll 
+ON employee.emp_id = payroll.emp_id
+HAVING start_date BETWEEN CAST('2010-01-01' as date) and date(now());
+
+
 
 
 
